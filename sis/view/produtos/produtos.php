@@ -32,6 +32,7 @@
                                         <tr>
                                             <th>COD.</th>
                                             <th>produto</th>
+                                            <th>Categoria</th>
                                             <th>Descrição</th>
                                             <th>estoque</th>
                                             <th>Ações</th>
@@ -44,6 +45,7 @@
                                             <tr id="A_produto' . $l['id'] . '">
                                                 <td>' . $l['id'] . '</td>
                                                 <td>' . $l['produto'] . '</td>
+                                                <td>' . $l['categoria'] . '</td>
                                                 <td>' . $sis->resume($l['descr'],50) . '</td>
                                                 <td>' . $l['estoque'] . '</td>
                                                 <td>
@@ -87,6 +89,22 @@
                                     <label for="Estoque">Estoque</label><br>
                                     <span>Produtos disponiveis para venda</span>
                                     <input type="number" class="form-control" id="Estoque" placeholder="estoque" name="estoque" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Categoria">Categoria</label><br>
+                                    <select class="form-control" id="Categoria" name="cate" required>
+                                        <option disabled selected>Selecione uma categoria</option>
+                                        <?php
+                                            if($categorias){
+                                                foreach ($categorias as $c) {
+                                                    echo '<option value="'.$c['id'].'">'.$c['categoria'].'</option>';
+                                                }
+                                            }else {
+                                                echo "<option disabled>Nenhuma categoria cadastrada!</option>";
+                                            }
+                                        ?>
+                                        
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Imagem</label>

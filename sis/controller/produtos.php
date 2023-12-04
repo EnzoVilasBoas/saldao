@@ -1,6 +1,8 @@
 <?php
     $sis     = new Sistema;
     $pd     = new Produtos;
+    $cat     = new Categorias;
+
 
     $acao       = $sis->getParametros()[1] ?? null;
     $parametro  = $sis->getParametros()[2] ?? null;
@@ -9,7 +11,8 @@
     switch ($acao) {
         case 'galeria':
             if ($parametro) {
-                # code...
+                $p = $pd->retorna($parametro);
+                require_once('view/produtos/galeria.php');
             }else {
                 require_once('view/404.php');
             }
@@ -34,6 +37,7 @@
                     }
                 }
                 $p = $pd->retorna($parametro);
+                $categorias = $cat->listar();
                 require_once('view/produtos/atualizar.php');
             }else {
                 require_once('view/404.php');
@@ -106,6 +110,7 @@
                 }
             }
             $lista = $pd->listar();
+            $categorias = $cat->listar();
             require_once('view/produtos/produtos.php');
             break;
     }

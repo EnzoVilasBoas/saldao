@@ -42,6 +42,22 @@
                                     <input type="number" class="form-control" id="Estoque" value="<?= $p['estoque'] ?>" name="estoque" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="Categoria">Categoria</label><br>
+                                    <select class="form-control" id="Categoria" name="cate" required>
+                                        <option value="<?= $p['cate'] ?>" selected>Selecione uma categoria</option>
+                                        <?php
+                                            if($categorias){
+                                                foreach ($categorias as $c) {
+                                                    echo '<option value="'.$c['id'].'">'.$c['categoria'].'</option>';
+                                                }
+                                            }else {
+                                                echo "<option disabled>Nenhuma categoria cadastrada!</option>";
+                                            }
+                                        ?>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Imagem</label>
                                     <div class="custom-file">
                                         <input type="hidden" value="<?= $p['imagem'] ?>" name="imagemOld">

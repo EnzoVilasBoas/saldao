@@ -7,7 +7,8 @@
          * @return array/int
          */
         public function listar() {
-            $read = Dbasis::read('produtos');
+            $read = Dbasis::select('*,produtos.id','produtos','INNER JOIN categorias ON categorias.id = produtos.cate');
+            //$read = Dbasis::read('produtos');
             if ($read->num_rows) {
                 return $read;
             }else {
@@ -21,7 +22,8 @@
          * @return array/int
          */
         public function retorna($produto) {
-            $read = Dbasis::read('produtos',"id = $produto");
+            $read = Dbasis::select('*,produtos.id','produtos','INNER JOIN categorias ON categorias.id = produtos.cate WHERE produtos.id = '.$produto);
+            //$read = Dbasis::read('produtos',"id = $produto");
             if ($read->num_rows) {
                 foreach ($read as $r);
                 return $r;
@@ -53,6 +55,7 @@
                 $cad = [
                     "produto"   => $post['produto'],
                     "descr"     => $post['descr'],
+                    "cate"      => $post['cate'],
                     "estoque"   => $post['estoque'],
                     "imagem"    => $upload
                 ];
@@ -87,6 +90,7 @@
                     "produto"   => $post['produto'],
                     "descr"     => $post['descr'],
                     "estoque"   => $post['estoque'],
+                    "cate"      => $post['cate'],
                     "imagem"    => ($post['imagem']) ? $upload : $post['imagemOld']
                 ];
                 $update = Dbasis::update("produtos",$up,"id = $produto");

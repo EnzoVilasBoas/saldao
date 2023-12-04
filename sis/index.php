@@ -116,6 +116,18 @@
                             <p>Produtos</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= BASESIS ?>/categorias" class="nav-link">
+                            <i class="nav-icon fa fa-bookmark"></i>
+                            <p>Categorias</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= BASESIS ?>/midias" class="nav-link">
+                            <i class="nav-icon fa fa-share-alt"></i>
+                            <p>Midias Sociais</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

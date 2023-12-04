@@ -11,5 +11,14 @@
             echo $prod->num_rows;
         }
 
+        /**
+         * Método responsavel por somar as categorias cadastradas
+         * @return int Numero de categorias cadastradas
+         */
+        public function categorias() {
+            $prod = Dbasis::read("categorias");
+            echo $prod->num_rows;
+        }
+
 
     }
